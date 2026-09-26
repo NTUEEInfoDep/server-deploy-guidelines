@@ -1,4 +1,5 @@
 site_name: NTUEE InfoDep Server Deploy Guidelines
+site_url: https://docs.ntueeinfodep.ntuee.org/
 site_description: 台大電機系學會資訊部服務部署規範
 repo_url: https://github.com/NTUEEInfoDep/server-deploy-guidelines
 repo_name: NTUEEInfoDep/server-deploy-guidelines

@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!requirements.txt
+!mkdocs.yml
+!nginx.conf
+!docs/
+!docs/**
+**/.DS_Store

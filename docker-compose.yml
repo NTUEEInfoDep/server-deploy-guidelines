@@ -1,0 +1,17 @@
+name: ntueeinfodep-docs
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      default:
+      nginx:
+        aliases:
+          - ntueeinfodep-docs
+
+networks:
+  nginx:
+    external: true
