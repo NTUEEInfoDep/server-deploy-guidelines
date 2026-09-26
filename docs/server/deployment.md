@@ -10,9 +10,15 @@ Repository 應明確指定用於正式環境（Production）部署的 branch，�
 
 1. **部署說明文件**
 
-   應以 SOP 形式列出初次部署、更新及停止服務所需的步驟與指令。
+   應以可直接複製執行的指令為主，簡短列出 Production branch、初次部署、更新、停止服務及部署後驗證方式。
 
    可撰寫於根目錄 `README.md` 的 `Production` 或 `Deployment` 區段，或另行撰寫於 `production.md`，並由 `README.md` 明確連結。
+
+   部署說明不需重述本網站已有的 Domain、Service ID、Docker 或 network 規範，也不需逐項解釋 Docker Compose 中已清楚表達的設定。環境變數的名稱、範例值及簡短用途應優先記載於 `.env.example` 的註解中；部署說明只需列出建立及編輯 `.env` 的指令。
+
+   只有專案特有且無法由 Docker 部署流程自動完成的必要操作，才需另外說明。若操作較長，例如既有資料 migration 或版本切換，應另建文件並由 Production 區塊連結，不要將完整背景與原理寫入 README。
+
+   最小格式請直接套用[部署範本](templates.md#readme-production)。
 
 2. **Production 使用的 Docker 設定**
 

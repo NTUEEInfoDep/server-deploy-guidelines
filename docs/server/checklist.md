@@ -5,7 +5,8 @@
 ## Repository
 
 - [ ] 已指定 Production branch。
-- [ ] 已提供初次部署、更新及停止服務的 SOP。
+- [ ] 已以可直接執行的指令提供初次部署、更新、停止服務及驗證方式。
+- [ ] 部署說明保持精簡，未重述通用部署規範或 Compose 已清楚表達的設定。
 - [ ] 已提供 Production 使用的 Dockerfile 與 Docker Compose 設定。
 - [ ] Production 部署不需在 Host 直接執行 `pnpm`、`npm`、`pip` 等專案工具。
 

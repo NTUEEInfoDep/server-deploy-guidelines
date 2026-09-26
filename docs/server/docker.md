@@ -129,7 +129,7 @@ restart: unless-stopped
 - Repository 可提供 `.env.example`，列出必要變數及非機密範例值。
 - 不得將密碼、API Token、私鑰或其他機密資料提交至 Repository。
 - Production 使用的 `.env` 應只保留於伺服器，並加入 `.gitignore`。
-- 部署說明應記載必要環境變數及其用途，不得記載正式機密值。
+- `.env.example` 應以註解簡短記載必要環境變數的用途；部署說明不需再次逐項解釋，且不得記載正式機密值。
 
 ## 禁止設定
 

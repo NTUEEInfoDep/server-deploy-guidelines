@@ -4,6 +4,46 @@
 
 實際使用前，請依專案調整環境變數、Port 與資料目錄，並將 `example` 替換為核准的 Service ID。
 
+## README Production 區塊範本
+
+README 的 Production 區塊應以可執行的指令為主。以下為最小範本；沒有環境變數時，刪除複製及編輯 `.env` 的指令。
+
+````markdown
+## Production
+
+使用 `main` branch，以根目錄的 `docker-compose.yml` 部署。
+
+首次部署：
+
+```bash
+git clone --branch main <repository-url> ~/productions/example
+cd ~/productions/example
+cp .env.example .env
+vim .env
+docker compose config
+docker compose up -d --build
+docker compose ps
+```
+
+更新：
+
+```bash
+git pull --ff-only origin main
+docker compose up -d --build
+docker compose ps
+```
+
+部署後確認 `<health-check-url>` 可正常存取。停止服務：
+
+```bash
+docker compose down
+```
+````
+
+如有專案特有且無法自動化的必要操作，僅補充對應指令。較長的 migration 或版本切換流程應另建文件，並在此區塊提供連結。
+
+## Docker Compose 範本
+
 ```yaml
 name: example
 
