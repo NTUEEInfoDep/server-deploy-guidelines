@@ -7,7 +7,7 @@
 - 使用 `ntuee.org` 之 Domain。
 - 將網站服務部署於資訊部管理之伺服器，不論使用何種 Domain。
 
-[填寫網站服務申請表](#application-form){ .action-link }
+[填寫網站服務申請表](https://forms.gle/v27p3Fip8TT9CtUL6){ .action-link }
 
 ## 相關文件
 
@@ -20,7 +20,7 @@
 
 1. 準備開發完成的 GitHub Repository，並指定 Production 使用的 branch。
 2. 依 [部署規範](deployment.md) 與 [Docker 部署規範](docker.md) 準備 Production 部署設定及部署說明文件。
-3. 填寫網站服務申請表，提出希望使用的 Domain、預計下線日期及特殊需求。
+3. [填寫網站服務申請表](https://forms.gle/v27p3Fip8TT9CtUL6)，提出希望使用的 Domain、預計下線日期及特殊需求。
 4. 資訊部確認 Domain、Service ID 與部署設定。
 5. 經確認後，由申請單位自行部署，或由資訊部協助部署。若需資訊部協助，請提供可確認部署成功的檢查方式。
 6. 服務部署完成且可正常存取後，由資訊部完成 DNS 與對外連線設定。
