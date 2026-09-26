@@ -15,7 +15,9 @@
 - [網站服務申請與部署](server/application.md)
 - [Domain 與 Service ID](server/naming.md)
 - [部署規範](server/deployment.md)
+- [Docker 部署規範](server/docker.md)
 - [部署範本](server/templates.md)
+- [部署檢查清單](server/checklist.md)
 
 ## 帳號申請
 

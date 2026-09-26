@@ -15,9 +15,11 @@ nav:
   - 網站架設與網域管理:
       - 服務申請流程: server/application.md
       - Domain 與 Service ID: server/naming.md
-      - Docker Compose 部署規範: server/deployment.md
+      - 部署規範: server/deployment.md
+      - Docker 部署規範: server/docker.md
       - 部署範本: server/templates.md
-  - 帳號申請: 
+      - 部署檢查清單: server/checklist.md
+  - 帳號申請:
       - 帳號申請流程: account/index.md
 
 markdown_extensions:

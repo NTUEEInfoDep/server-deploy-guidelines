@@ -11,18 +11,18 @@ Domain 原則上使用小寫英文字母與數字，名稱應簡短並能辨識�
 週期性活動使用「活動名稱加年份」作為 basename：
 
 ```text
-camp2027.ntuee.org
+camp2026.ntuee.org
 ```
 
-活動 basename 應與歷年命名一致。若同一活動需要多個網站，可增加一層 subdomain：
+同一活動如需多個網站，可增加一層 subdomain，例如電機營大富翁網站：
 
 ```text
-monopoly.camp2027.ntuee.org
+monopoly.camp2026.ntuee.org
 ```
 
 ### 跨年份服務
 
-跨年份共用的活動網站不加入年份：
+跨年份共用的服務不加入年份：
 
 ```text
 make.ntuee.org
@@ -36,21 +36,21 @@ make.ntuee.org
 course.ntuee.org
 ```
 
-## Service ID 轉換規則
+## Service ID
 
-Service ID 必須在整台伺服器上唯一，產生方式如下：
+Service ID 必須在整台伺服器上唯一。對 `ntuee.org` Domain，依下列方式產生：
 
-1. 移除 Domain 結尾的 `.ntuee.org`。
+1. 移除結尾的 `.ntuee.org`。
 2. 將剩餘的 Domain 層級反向排列。
 3. 以 `-` 連接各層級。
 
 例如：
 
 ```text
-camp2027.ntuee.org             → camp2027
-monopoly.camp2027.ntuee.org      → camp2027-monopoly
-course.ntuee.org               → course
-docs.infodep.ntuee.org    → infodep-docs
+camp2027.ntuee.org          → camp2027
+monopoly.camp2027.ntuee.org   → camp2027-monopoly
+course.ntuee.org            → course
+docs.infodep.ntuee.org      → infodep-docs
 ```
 
 如發生命名衝突，或服務使用非 `ntuee.org` Domain，由資訊部於核准時另行指定 Service ID。

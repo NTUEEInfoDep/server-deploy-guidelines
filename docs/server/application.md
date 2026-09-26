@@ -11,31 +11,25 @@
 
 ## 相關文件
 
-- [Domain 與 Service ID](naming.md)：Domain 命名原則及 Service ID 轉換規則。
-- [部署規範](deployment.md)：Repository、Docker Compose、network、Port 及環境變數等部署要求。
-- [部署範本](templates.md)：可直接修改使用之 `docker-compose.yml` 範例。
+- [Domain 與 Service ID](naming.md)：Domain 命名與 Service ID 規則。
+- [部署規範](deployment.md)：Production 部署應遵守的基本要求。
+- [Docker 部署規範](docker.md)：Docker Compose、network、storage 及初始化等技術要求。
+- [部署檢查清單](checklist.md)：提出申請前的簡要檢查項目。
 
 ## 申請流程
 
-1. 準備開發完成的 GitHub Repository。
-2. 依 [部署規範](deployment.md) 準備 Production 使用的 `Dockerfile`、`docker-compose.yml` 及部署說明文件。
-3. 填寫[網站服務申請表](#application-form)。
+1. 準備開發完成的 GitHub Repository，並指定 Production 使用的 branch。
+2. 依 [部署規範](deployment.md) 與 [Docker 部署規範](docker.md) 準備 Production 部署設定及部署說明文件。
+3. 填寫網站服務申請表，提出希望使用的 Domain、預計下線日期及特殊需求。
 4. 資訊部確認 Domain、Service ID 與部署設定。
 5. 經確認後，由申請單位自行部署，或由資訊部協助部署。若需資訊部協助，請提供可確認部署成功的檢查方式。
-6. 資訊部完成 DNS 與對外連線設定後，網站正式上線。
+6. 服務部署完成且可正常存取後，由資訊部完成 DNS 與對外連線設定。
 
-## 部署要求
+## 特殊需求
 
-部署前應確認下列事項：
+如需 Host Port、特殊 network 或權限、非標準部署方式，應於申請時說明。
 
-- 未經資訊部確認，不得自行認定 Domain 已核准或可供使用。
-- Repository 根目錄應包含 `README.md` 及 Production 使用的 Docker Compose 設定。
-- 服務應部署於 `~/productions/<service_id>/`。
-- Docker Compose 不應設定 `container_name`。
-- Web service 應透過既有的 `nginx` Docker network 提供服務，原則上不得將服務 Port 映射至 Host。
-- 部署說明文件應包含可直接執行的部署、更新及停止服務步驟。
-
-部署前請先閱讀 [Domain 與 Service ID](naming.md)，並依 [部署規範](deployment.md) 及 [部署範本](templates.md) 準備服務。
+如需自訂 Header、Path routing、WebSocket 或其他特殊 Nginx 行為，亦應於申請時提出；可一併提供建議的 Nginx configuration，實際設定由資訊部確認。
 
 ## 使用期限 { #expiry }
 

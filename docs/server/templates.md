@@ -1,12 +1,8 @@
 # 部署範本
 
-以下範例使用 Service ID `example`、Web Port `3000`，並包含 PostgreSQL。
+以下為單一 Web service 搭配 PostgreSQL 的最小範例。範例使用 Service ID `example` 與 Web Container Port `3000`。
 
-實際使用前，請依專案調整 `build`、image、Port、volume 及環境變數，並將 `example` 替換為核准的 Service ID。
-
-!!! warning "請勿設定 container_name"
-
-    請保留由 Docker Compose 自動產生的 Container 名稱。
+實際使用前，請依專案調整環境變數、Port 與資料目錄，並將 `example` 替換為核准的 Service ID。
 
 ```yaml
 name: example
@@ -29,16 +25,14 @@ services:
         condition: service_healthy
 
   db:
-    image: postgres:17
+    image: postgres:18
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - default
+      - db-data:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 10s
@@ -53,7 +47,7 @@ networks:
     external: true
 ```
 
-對應的 `.env.example` 可寫為：
+對應的 `.env.example`：
 
 ```dotenv
 POSTGRES_DB=example
@@ -62,3 +56,5 @@ POSTGRES_PASSWORD=replace-with-a-random-password
 ```
 
 正式環境的 `.env` 不得提交至 Repository。
+
+如專案需要 migration 或其他初始化程序，請依 [Docker 部署規範](docker.md#initialization) 納入 Docker 部署流程。
