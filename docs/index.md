@@ -1,4 +1,4 @@
-# NTUEE Student Association Information Department Server
+# NTUEE Student Association Information Department Server Deploy Guidelines
 
 ## 最新公告
 
