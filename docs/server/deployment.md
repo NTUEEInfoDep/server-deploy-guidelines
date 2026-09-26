@@ -37,6 +37,14 @@ name: example
 
 Service key 應使用可辨識用途的名稱，例如 `web`、`db`、`redis`。
 
+## Nginx 反向代理
+
+網站服務由資訊部統一透過 Nginx 對外提供 HTTP(S) 服務。
+
+一般服務僅需依下列 Docker Network 與 Port 規範部署，不需自行設定 Nginx。
+
+如服務需要特殊的 Nginx 設定，例如自訂 Header、Path routing、WebSocket 或其他 Proxy 行為，應於申請時說明。必要時可一併提供建議的 Nginx configuration，實際設定由資訊部確認。
+
 ## Docker Network
 
 對外提供 HTTP 服務的 Web service 必須同時加入：
