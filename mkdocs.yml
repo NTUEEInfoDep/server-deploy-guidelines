@@ -1,0 +1,32 @@
+site_name: NTUEE InfoDep Server Deploy Guidelines
+site_description: 台大電機系學會資訊部服務部署規範
+repo_url: https://github.com/NTUEEInfoDep/server-deploy-guidelines
+repo_name: NTUEEInfoDep/server-deploy-guidelines
+edit_uri: edit/main/docs/
+
+theme:
+  name: readthedocs
+  highlightjs: true
+
+nav:
+  - 首頁: index.md
+  - 最新公告:
+      - Hello World: news/2026092601.md
+  - 網站架設與網域管理:
+      - 服務申請流程: server/application.md
+      - Domain 與 Service ID: server/naming.md
+      - Docker Compose 部署規範: server/deployment.md
+      - 部署範本: server/templates.md
+  - 帳號申請: 
+      - 帳號申請流程: account/index.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+strict: true

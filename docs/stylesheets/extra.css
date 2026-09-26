@@ -1,0 +1,27 @@
+.action-link {
+  display: inline-block;
+  margin: 0.25rem 0.5rem 1rem 0;
+  padding: 0.65rem 1rem;
+  border-radius: 0.25rem;
+  background: #236192;
+  color: #fff !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.action-link:hover {
+  background: #174a70;
+  text-decoration: none;
+}
+
+.action-link-secondary {
+  background: #59636e;
+}
+
+.action-link-secondary:hover {
+  background: #404850;
+}
+
+code {
+  overflow-wrap: anywhere;
+}
