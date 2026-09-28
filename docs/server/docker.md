@@ -14,9 +14,11 @@ services:
 
 不得直接沿用舊專案留下、且無法確認與目前 Repository 內容一致的 Application Image。
 
-如需使用預先建置的 Application Image，部署文件必須能明確對應其來源 Repository 與 commit、tag 或其他版本識別。無法確認來源與版本者不得使用。
+如需使用預先建置的 Application Image，部署文件必須能明確對應其來源 Repository 與 commit、tag 或其他版本識別。Image tag 允許使用 `latest`；使用 `latest` 等可變 tag 時，部署後應記錄實際使用的 Image ID 或 digest，以便追查及回復。無法確認來源者不得使用。
 
-PostgreSQL、Redis、Nginx 等第三方基礎服務可使用其官方 Image，並應指定明確版本。
+PostgreSQL、Redis、Nginx 等第三方基礎服務可使用其官方 Image。Image tag 可指定明確版本，也允許使用 `latest`。
+
+使用 `latest` 不視為違反規範，但應注意該 tag 指向的內容可能改變。執行 `docker compose pull` 或重新部署前，應先確認相容性、備份持久資料，並保留可回復至原 Image ID 或 digest 的資訊。
 
 Production 部署不得要求在 Host 直接執行 `pnpm`、`npm`、`pip` 或其他專案 Runtime、Package Manager、Build Tool。相關步驟應在 Dockerfile 或 Container 內完成。
 
@@ -83,22 +85,31 @@ expose:
 
 Container 應視為可重建。Database、使用者上傳檔案及其他需持久保存的資料，不得僅存放於 Container writable layer。
 
-Database 原則上使用 named volume。以下以 PostgreSQL 18 官方 Image 為例：
+持久資料可使用 named volume 或 bind mount。雖不強制，強烈建議為 Database、使用者上傳檔案及其他需保存資料的 service，在 Repository 內規劃各自獨立的資料夾，並以相對路徑 bind mount 至 Container 的資料目錄。如此部署所需的資料位置會與專案放在一起，較容易辨識、備份與搬移。
+
+以下以 PostgreSQL 18 官方 Image 為例，將 Host 上 Repository 內的 `data/postgres` 映射至 Container：
 
 ```yaml
 services:
   db:
     image: postgres:18
     volumes:
-      - db-data:/var/lib/postgresql
-
-volumes:
-  db-data:
+      - ./data/postgres:/var/lib/postgresql
 ```
 
-如使用 bind mount，Host 路徑應固定、用途明確並記載於部署說明，不得使用 `/tmp` 等暫存位置。
+Repository 內的持久資料夾不得提交至 Git，應加入 `.gitignore`，例如：
+
+```gitignore
+/data/
+```
+
+若同一專案有多個需持久保存資料的 service，應使用不同子資料夾，例如 `data/postgres`、`data/redis` 與 `data/uploads`，不得共用同一資料目錄。
+
+如使用 Repository 以外的 bind mount，Host 路徑應固定、用途明確並記載於部署說明，不得使用 `/tmp` 等暫存位置。若使用 named volume，仍應確認備份、還原及搬移方式。
 
 Volume 或 bind mount 的 Container 路徑應符合所使用 Application 或官方 Image 的資料目錄。
+
+既有服務如要從 named volume 或其他 Host 路徑改用 Repository 內 bind mount，請依[持久資料遷移](storage-migration.md)執行。遷移並非強制，且不得在未備份及驗證前刪除原 storage。
 
 ## Initialization
 

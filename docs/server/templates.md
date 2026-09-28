@@ -72,15 +72,12 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - db-data:/var/lib/postgresql
+      - ./data/postgres:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 10s
       timeout: 5s
       retries: 5
-
-volumes:
-  db-data:
 
 networks:
   nginx:
@@ -96,5 +93,7 @@ POSTGRES_PASSWORD=replace-with-a-random-password
 ```
 
 正式環境的 `.env` 不得提交至 Repository。
+
+範例採用建議的 bind mount，將 PostgreSQL 資料保存在 Host 上 Repository 內的 `data/postgres`。此做法並非強制；如改用 named volume，仍須確保資料可備份、還原及搬移。`data/` 必須加入 `.gitignore`，不得將正式資料提交至 Git。
 
 如專案需要 migration 或其他初始化程序，請依 [Docker 部署規範](docker.md#initialization) 納入 Docker 部署流程。
