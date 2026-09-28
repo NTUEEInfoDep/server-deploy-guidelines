@@ -11,7 +11,7 @@ theme:
 nav:
   - 首頁: index.md
   - 最新公告:
-      - Hello World: news/2026092601.md
+      - 網站服務部署規範上線公告: news/2026092801.md
   - 網站架設與網域管理:
       - 服務申請流程: server/application.md
       - Domain 與 Service ID: server/naming.md

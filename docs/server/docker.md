@@ -109,8 +109,6 @@ Repository 內的持久資料夾不得提交至 Git，應加入 `.gitignore`，�
 
 Volume 或 bind mount 的 Container 路徑應符合所使用 Application 或官方 Image 的資料目錄。
 
-既有服務如要從 named volume 或其他 Host 路徑改用 Repository 內 bind mount，請依[持久資料遷移](storage-migration.md)執行。遷移並非強制，且不得在未備份及驗證前刪除原 storage。
-
 ## Initialization
 
 首次部署所需的 migration、schema initialization、seed 或其他初始化程序必須納入 Repository，並由 Docker 部署流程執行。
