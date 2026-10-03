@@ -29,7 +29,6 @@
 至少執行：
 
 ```bash
-docker compose config
 docker compose up -d --build
 docker compose ps
 ```

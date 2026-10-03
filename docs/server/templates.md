@@ -20,7 +20,6 @@ git clone --branch main <repository-url> ~/productions/example
 cd ~/productions/example
 cp .env.example .env
 vim .env
-docker compose config
 docker compose up -d --build
 docker compose ps
 ```

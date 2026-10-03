@@ -37,7 +37,6 @@ SSL 頁籤設定此網域的憑證並啟用 Force SSL。Compose 的 network alia
 mkdir -p ~/productions
 git clone --branch main https://github.com/NTUEEInfoDep/server-deploy-guidelines.git ~/productions/ntueeinfodep-docs
 cd ~/productions/ntueeinfodep-docs
-docker compose config
 docker compose up -d --build
 docker compose ps
 ```
